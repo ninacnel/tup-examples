@@ -7,14 +7,17 @@ import { allProducts } from "../data/Data";
 const Parent = () => {
     const [products, setProducts] = useState(allProducts);
 
-    const handleAddNewProduct = (newItem) => {
-        const newProduct = {
-            code: Math.random().toString(),
-            ...newItem,
-        }
+// todo lo relacionado a la creacion/modificacion/eliminacion de productos
+// deberia hacerse pegandole a la API y no actualizando un estado
 
-        setProducts((prevState) => [...prevState, newProduct]);
-    }
+    // const handleAddNewProduct = (newItem) => {
+    //     const newProduct = {
+    //         code: Math.random().toString(),
+    //         ...newItem,
+    //     }
+
+    //     setProducts((prevState) => [...prevState, newProduct]);
+    // }
 
     return (
         <>
@@ -23,7 +26,8 @@ const Parent = () => {
                 <Row>
                     {products.map((product) => (
                         <Col key={product.code} md={4} className='mb-2'>
-                            <Children      
+                            <Children
+                                code={product.code}      
                                 name={product.name}
                                 price={product.price}
                                 isAvailable={product.isAvailable}
@@ -31,7 +35,6 @@ const Parent = () => {
                         </Col>
                     ))}
                 </Row>
-                <NewProduct onHandleAddNewProduct={handleAddNewProduct}/>
             </Container>
         </>
     );
