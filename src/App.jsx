@@ -4,7 +4,7 @@ import MainLayout from './components/layout/MainLayout';
 import NewProduct from './components/newProduct/NewProduct';
 import Private from './components/routes/Private';
 import Login from './components/login/Login';
-import ProductInfo from './productInfo/ProductInfo';
+import ProductInfo from './components/productInfo/ProductInfo';
 import Parent from './components/parent/Parent';
 import { useState } from 'react';
 import './App.css'

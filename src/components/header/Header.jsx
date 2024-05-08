@@ -2,22 +2,21 @@ import React from 'react'
 import { Button, Container, Form, Nav, NavDropdown, Navbar } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
-
 const Header = () => {
-const navigate = useNavigate();
+    const navigate = useNavigate();
 
-const handleHomeNavigation =()=>{
-    navigate('/');
-};
+    const handleHomeNavigation = () => {
+        navigate('/');
+    };
 
-const handleFormNavigation =()=>{
-    navigate('/product-form');
-};
+    const handleFormNavigation = () => {
+        navigate('/product-form');
+    };
 
     return (
         <Navbar expand="lg" className="bg-body-tertiary mb-3">
             <Container fluid>
-                <Navbar.Brand onClick={handleHomeNavigation}>Shop</Navbar.Brand>
+                <Navbar.Brand onClick={handleHomeNavigation} style={{ cursor: "pointer" }}>Shop</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
