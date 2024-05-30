@@ -1,16 +1,11 @@
-import React from "react";
-import {
-  Button,
-  Container,
-  Form,
-  Nav,
-  NavDropdown,
-  Navbar,
-} from "react-bootstrap";
+import { useContext } from "react";
+import { Button, Container, Nav, Navbar, } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../services/contexts/theme/ThemeContext";
 
 const Header = () => {
   const navigate = useNavigate();
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   const handleHomeNavigation = () => {
     navigate("/");
@@ -25,7 +20,7 @@ const Header = () => {
   };
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary mb-3">
+    <Navbar expand="lg" className={`mb-3 ${theme === 'dark' ? 'bg-secondary' : 'bg-body-tertiary'}`}>
       <Container fluid>
         <Navbar.Brand
           onClick={handleHomeNavigation}
@@ -46,30 +41,12 @@ const Header = () => {
             <Nav.Link onClick={handleCommentsNavigation} href="">
               Comments
             </Nav.Link>
-            {/* <Nav.Link href="#action2">Link</Nav.Link>
-                        <NavDropdown title="Link" id="navbarScrollingDropdown">
-                            <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action4">
-                                Another action
-                            </NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action5">
-                                Something else here
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                        <Nav.Link href="#" disabled>
-                            Link
-                        </Nav.Link> */}
+            <Button
+              variant={`${theme === 'dark' ? 'dark' : 'light'}`}
+              onClick={toggleTheme}>
+              <i className={theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon'} />
+            </Button>
           </Nav>
-          {/* <Form className="d-flex">
-                        <Form.Control
-                            type="search"
-                            placeholder="Search"
-                            className="me-2"
-                            aria-label="Search"
-                        />
-                        <Button variant="outline-success">Search</Button>
-                    </Form> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>
